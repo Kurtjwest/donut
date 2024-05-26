@@ -77,13 +77,13 @@ Game::Game(int argc, char** argv)
 	const int windowWidth = 1280, windowHeight = 960;
 	_window = std::make_unique<Window>(windowTitle, windowWidth, windowHeight);
 
-	glEnable(GL_DEBUG_OUTPUT);
-	glDebugMessageCallback(MessageCallback, 0);
-	glDebugMessageControl(GL_DEBUG_SOURCE_API, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, 0, GL_FALSE);
+	// glEnable(GL_DEBUG_OUTPUT);
+	// glDebugMessageCallback(MessageCallback, 0);
+	// glDebugMessageControl(GL_DEBUG_SOURCE_API, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, 0, GL_FALSE);
 
 	ImGui::CreateContext();
-	ImGui_ImplSDL2_InitForOpenGL(static_cast<SDL_Window*>(*_window), static_cast<SDL_GLContext*>(*_window));
-	ImGui_ImplOpenGL3_Init("#version 130");
+	ImGui_ImplSDL2_InitForOpenGL(static_cast<SDL_Window*>(*_window), *_window);
+	ImGui_ImplOpenGL3_Init("#version 150");
 
 	// const float dpi_scale = 2.0f;
 	// ImGuiIO& io = ImGui::GetIO();
@@ -151,8 +151,7 @@ Game::~Game()
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
 
-	// todo: might need to reset our unique_ptrs here in a certain order...
-
+	// Properly reset unique_ptrs
 	_window.reset();
 
 	SDL_Quit();

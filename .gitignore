@@ -4,3 +4,6 @@
 # ide files
 .vs
 /.vscode/
+/vcpkg/
+
+/game/
