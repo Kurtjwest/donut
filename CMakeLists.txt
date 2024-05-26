@@ -41,7 +41,7 @@ mark_as_advanced(_CXX_FILESYSTEM_HAVE_EXPERIMENTAL_HEADER)
 # Dependencies
 find_package(SDL2 REQUIRED) # https://www.libsdl.org
 find_package(fmt REQUIRED) # https://fmt.dev
-find_package(OpenAL REQUIRED) #find_package(openal-soft CONFIG REQUIRED) # https://github.com/kcat/openal-soft
+find_package(OpenAL CONFIG REQUIRED) # https://github.com/kcat/openal-soft
 find_package(Bullet REQUIRED) # http://www.bulletphysics.com/Bullet/
 find_package(glm REQUIRED) # http://glm.g-truc.net
 
